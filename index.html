@@ -31,6 +31,57 @@
     <div id="button" class="ring">
         Enter
     </div>
+
+    <div class="container">
+    
+        <video width="320" height="240" autoplay muted loop id="vid">
+          <source src="./static/intromov.mp4" type="video/mp4">
+        </video>
+
+    <div class="text-cont" id="content" style="font-weight: 100;">
+        <img src="./static/ignus_logo-removebg-preview.png">
+        <span style="font-weight: 600;"> COMING SOON </span>
+    </div>   
+    
+    </div>
+    <div id="particles-js"></div>
+
+      
+    
+      <script>
+        const cont = document.getElementsByClassName("container");
+        // var audio = document.createElement("AUDIO");
+        var audio = new Audio("./static/aud.ogg");
+        const btn = document.getElementById("btn");
+        const vid = document.getElementById("vid");
+        const text_cont = document.getElementById("content");
+        const particles = document.getElementById("particles-js");
+        const button = document.getElementById("button");
+        const video_loading = document.getElementById("video-loading");
+
+        button.onclick = function(){
+            button.style.display = "none";
+            video_loading.style.display = "none";
+            cont[0].style.display = "block";
+            document.body.style.background = "transparent";
+        }
+    
+        document.body.appendChild(audio);
+        let ct= 1;
+    
+        window.addEventListener("click", ()=>{
+          if(ct == 1){
+            audio.play();
+            ct++;
+          }
+    
+        })
+      </script>
+    
+    <script src= "particles.js">
+    </script>
+    <script src="app.js">
+    </script>
     
     <script>
         $(window).on('load', function () {
