@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ignus</title>
+    <link rel="stylesheet" type="text/css" href="coming-soon.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+
+    <div id="loading">
+        <h1>
+            <span class="let1 loading-span">l</span>  
+            <span class="let2 loading-span">o</span>  
+            <span class="let3 loading-span">a</span>  
+            <span class="let4 loading-span">d</span>  
+            <span class="let5 loading-span">i</span>  
+            <span class="let6 loading-span">n</span>  
+            <span class="let7 loading-span">g</span>  
+        </h1>
+    </div>
+
+    <div id="video-loading">
+        <video id="video_loader" autoplay loop muted>
+            <source src="ignus-loader.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div id="button" class="ring">
+        Enter
+    </div>
+    
+    <script>
+        $(window).on('load', function () {
+            setTimeout(removeLoader, 1000); //wait for page load PLUS two seconds.
+        })
+
+        function removeLoader(){
+            $( "#loading" ).fadeOut(500, function() {
+                $( "#loading" ).remove();
+                $( "#video-loading" ).css("top", "40%");
+                $("#button").fadeIn(2000, function() {
+                    $('#button').css("display", "block");
+                });
+            });
+        }
+    </script>
+
+</body>
+</html>
