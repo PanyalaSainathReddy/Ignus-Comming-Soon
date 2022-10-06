@@ -1,52 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Ignus</title>
-    <link rel="stylesheet" type="text/css" href="coming-soon.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Ignus</title>
+    <link rel="icon" type="image/x-icon" href="static/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="coming-soon.css" />
+    <script src="coming-soon.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-</head>
-<body>
-
+  </head>
+  <body>
     <div id="loading">
-        <h1>
-            <span class="let1 loading-span">l</span>  
-            <span class="let2 loading-span">o</span>  
-            <span class="let3 loading-span">a</span>  
-            <span class="let4 loading-span">d</span>  
-            <span class="let5 loading-span">i</span>  
-            <span class="let6 loading-span">n</span>  
-            <span class="let7 loading-span">g</span>  
-        </h1>
+      <h1>
+        <span class="let1 loading-span">l</span>
+        <span class="let2 loading-span">o</span>
+        <span class="let3 loading-span">a</span>
+        <span class="let4 loading-span">d</span>
+        <span class="let5 loading-span">i</span>
+        <span class="let6 loading-span">n</span>
+        <span class="let7 loading-span">g</span>
+      </h1>
     </div>
 
     <div id="video-loading">
-        <video id="video_loader" autoplay loop muted>
-            <source src="ignus-loader.mp4" type="video/mp4">
+      <video id="video_loader" autoplay loop muted>
+        <source src="static/videos/ignus-loader.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <!-- <div id="button" class="ring">Enter</div> -->
+    <div id="enter_video_div">
+        <video id="enter_video" muted autoplay loop>
+            <source src="static/videos/enter-video.mp4" type="video/mp4" />
         </video>
     </div>
 
-    <div id="button" class="ring">
-        Enter
-    </div>
-    
+    <video id="video_background" muted>
+      <source src="static/videos/cave-entrance.mp4" type="video/mp4" />
+    </video>
+
+    <div class="spotlight"></div>
+    <img id="bg_image" src="static/images/coming-soon-ignus.png" alt="Landing Image" />
+
     <script>
-        $(window).on('load', function () {
-            setTimeout(removeLoader, 1000); //wait for page load PLUS two seconds.
-        })
+      $(window).on("load", function () {
+        setTimeout(removeLoader, 1000); //wait for page load PLUS one second.
+      });
 
-        function removeLoader(){
-            $( "#loading" ).fadeOut(500, function() {
-                $( "#loading" ).remove();
-                $( "#video-loading" ).css("top", "40%");
-                $("#button").fadeIn(2000, function() {
-                    $('#button').css("display", "block");
-                });
-            });
-        }
+      function removeLoader() {
+        $("#loading").fadeOut(500, function () {
+          $("#loading").remove();
+          if ($(window).width() < 720) {
+            $("#video-loading").remove();
+            $("#bg_image").attr("src", "static/images/Coming-Soon-Ignus-Mobile.png");
+            $("#bg_image").css("display", "block");
+          }
+          else if ($(window).width() < 960) {
+            $("#video-loading").remove();
+            $("#bg_image").attr("src", "static/images/Coming-Soon-Ignus-Medium.png");
+            $("#bg_image").css("display", "block");
+          }
+          else {
+            $("#video-loading").css("top", "25%");
+            $("#video-loading").css("scale", "0.75");
+            setTimeout(() => $("#enter_video_div").css("display", "block"), 1500);
+          }
+        });
+      }
     </script>
-
-</body>
+  </body>
 </html>
